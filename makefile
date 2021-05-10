@@ -1,4 +1,4 @@
-default: arraylist
+default: linkedlist
 
 linkedlist:
 	gcc -Wall -o prog -g main.c queueElem.c queueLinkedList.c
