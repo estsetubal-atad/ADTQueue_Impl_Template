@@ -4,7 +4,7 @@
 #include "queue.h"
 #include <time.h>
 
-#define STRESS_TEST_SIZE 100000
+#define STRESS_TEST_SIZE 1000000
 
 void testFIFO(PtQueue queue);
 void testStress(PtQueue queue);

@@ -69,7 +69,7 @@ int queueEnqueue(PtQueue queue, QueueElem elem) {
 
 	if(!ensureCapacity(queue)) return QUEUE_NO_MEMORY;
 
-	queue->elements[queue->size++] = elem;
+	// TODO
 	
 	return QUEUE_OK;
 }
@@ -81,13 +81,7 @@ int queueDequeue(PtQueue queue, QueueElem *ptElem) {
 		return QUEUE_EMPTY;
 	}
 
-	*ptElem = queue->elements[0];
-	
-	for (int i = 0; i < queue->size - 1; i++) {
-		queue->elements[i] = queue->elements[i + 1];
-	}
-
-	queue->size--;
+	// TODO
 
 	return QUEUE_OK;
 }
@@ -97,7 +91,7 @@ int queueFront(PtQueue queue, QueueElem *ptElem) {
 
 	if (queueIsEmpty(queue)) return QUEUE_EMPTY;
 
-	*ptElem = queue->elements[0];
+	// TODO
 
 	return QUEUE_OK;
 }
@@ -133,10 +127,9 @@ void queuePrint(PtQueue queue) {
 	}
 	else {
 		printf("Queue contents (front to end): \n");
-		for (int i = 0; i < queue->size; i++) {
-			queueElemPrint(queue->elements[i]);
-			printf(" ");
-		}
+
+		// TODO
+		
 		printf("\n------------------------------ \n");
 	}
 }

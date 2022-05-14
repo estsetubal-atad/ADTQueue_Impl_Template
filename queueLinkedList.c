@@ -30,30 +30,10 @@ typedef struct queueImpl {
 
 
 PtQueue queueCreate() {
-	PtQueue newQueue = (PtQueue)malloc(sizeof(QueueImpl));
-	if (newQueue == NULL) return NULL;
 
-	newQueue->header = (PtNode)malloc(sizeof(Node));
-	if (newQueue->header == NULL) {
-		free(newQueue);
-		return NULL;
-	}
-	newQueue->trailer = (PtNode)malloc(sizeof(Node));
-	if (newQueue->trailer == NULL) {
-		free(newQueue->header);
-		free(newQueue);
-		return NULL;
-	}
-
-	newQueue->header->prev = NULL;
-	newQueue->header->next = newQueue->trailer;
-
-	newQueue->trailer->next = NULL;
-	newQueue->trailer->prev = newQueue->header;
-
-	newQueue->size = 0;
-
-	return newQueue;
+	// TODO
+	
+	return NULL;
 }
 
 int queueDestroy(PtQueue *ptQueue) {
@@ -78,19 +58,7 @@ int queueDestroy(PtQueue *ptQueue) {
 int queueEnqueue(PtQueue queue, QueueElem elem) {
 	if (queue == NULL) {return QUEUE_NULL;	}
 
-	PtNode newEnd = (PtNode)malloc(sizeof(Node));
-	if (newEnd == NULL) return QUEUE_NO_MEMORY;
-
-	PtNode curEnd = queue->trailer->prev;
-
-	newEnd->element = elem;
-	newEnd->next = queue->trailer;
-	newEnd->prev = curEnd;
-
-	queue->trailer->prev = newEnd;
-	curEnd->next = newEnd;
-
-	queue->size++;
+	// TODO
 
 	return QUEUE_OK;
 }
@@ -100,17 +68,7 @@ int queueDequeue(PtQueue queue, QueueElem *ptElem) {
 
 	if (queueIsEmpty(queue)) {return QUEUE_EMPTY;	}
 
-	PtNode curFront = queue->header->next;
-	PtNode newFront = curFront->next; 
-
-	*ptElem = curFront->element;
-
-	queue->header->next = newFront;
-	newFront->prev = queue->header;
-	
-	free(curFront);
-
-	queue->size--;
+	// TODO
 
 	return QUEUE_OK;
 }
@@ -120,8 +78,7 @@ int queueFront(PtQueue queue, QueueElem *ptElem) {
 
 	if (queueIsEmpty(queue)) {	return QUEUE_EMPTY;	}
 
-	PtNode curFront = queue->header->next;
-	*ptElem = curFront->element;
+	// TODO
 	
 	return QUEUE_OK;
 }
@@ -162,12 +119,9 @@ void queuePrint(PtQueue queue) {
 	}
 	else {
 		printf("Queue contents (front to end): \n");
-		PtNode current = queue->header->next;
-		while (current != queue->trailer) {
-			queueElemPrint(current->element);
-			printf(" ");
-			current = current->next;
-		}
+		
+		// TODO
+		
 		printf("\n------------------------------ \n");
 	}
 }
