@@ -68,6 +68,7 @@ void testStress(PtQueue queue) {
 
     start = clock();
     /* Do the work. */
+    printf("Enqueuing...");
     for(int i=0; i<STRESS_TEST_SIZE; i++) {
         int error_code = queueEnqueue(queue, 'a');
         if(error_code != QUEUE_OK) {
@@ -75,11 +76,15 @@ void testStress(PtQueue queue) {
             break;
         }
     }
+    printf("[OK]\n");
 
+
+    printf("Dequeuing...");
     while(!queueIsEmpty(queue)) {
         char front;
         queueDequeue(queue, &front);       
     }
+    printf("[OK]\n");
 
     end = clock();
     cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
