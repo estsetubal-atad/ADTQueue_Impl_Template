@@ -33,8 +33,8 @@ void testFIFO(PtQueue queue) {
     queuePrint(queue);
 
     //Test FIFO behavior (visually from output)
-    char examples[] = {'a', 'b', 'c', 'd', 'e', 'f'};
-    for(int i=0; i<sizeof(examples)/sizeof(char); i++) {
+    char examples[6] = {'a', 'b', 'c', 'd', 'e', 'f'};
+    for(int i=0; i<6; i++) {
         char ex = examples[i];
         printf("Pushing %c ...", ex);
         queueEnqueue(queue, ex);

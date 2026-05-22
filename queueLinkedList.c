@@ -40,14 +40,15 @@ int queueDestroy(PtQueue *ptQueue) {
 	PtQueue queue = *ptQueue;
 	if (queue == NULL) { return QUEUE_NULL;	}
 
-	/* This algorithm free all nodes including sentinels */
-	PtNode current = queue->header;
-	while (current != NULL) {
-		PtNode remove = current;
+	/* This algorithm free all internal nodes */
+	PtNode current = queue->header->next;
+	while (current != queue->trailer) {
 		current = current->next;
-		free(remove);
+		free(current->prev);
 	}
 
+	free(queue->header);
+	free(queue->trailer);
 	free(queue);
 
 	*ptQueue = NULL;
@@ -100,12 +101,7 @@ bool queueIsEmpty(PtQueue queue) {
 int queueClear(PtQueue queue) {
 	if (queue == NULL) return QUEUE_NULL;
 	
-	/* Can leverage queueDequeue to free nodes 
-		and decrement size */
-	QueueElem elem;
-	while (!queueIsEmpty(queue)) {
-		queueDequeue(queue, &elem);
-	}
+	// TODO
 
 	return QUEUE_OK;
 }
